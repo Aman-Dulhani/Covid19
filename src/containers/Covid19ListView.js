@@ -25,7 +25,7 @@ class Covid19ListView extends Component{
     }
     
     componentDidMount() {
-            axios.get('http://127.0.0.1:8000/api/')
+            axios.get('http://corona-ind-19-20.herokuapp.com/api/')
                 .then(result => result.data)
                 .then(rowData => this.setState({rowData}))
                 .catch(err => console.log(err));
