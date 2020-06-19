@@ -12,13 +12,21 @@ class Covid19ListView extends Component{
           }, {
             headerName: "Confirmed", field: "Confirmed"
           },{
+            headerName: "", field:"deltaConfirmed"
+          },
+          {
             headerName: "Active", field: "Active"
           },
           {
             headerName: "Recovered", field: "Recovered"
+          },{
+            headerName: "", field: "deltaRecovered"
           },
           {
             headerName: "Death", field:"Deaths"
+          },
+          {
+            headerName: "", field: "deltaDeaths"
           }
         ],
         rowData:null,

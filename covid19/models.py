@@ -7,6 +7,10 @@ class Covid19(models.Model):
     Deaths = models.IntegerField(default=None, null=True)
     Recovered = models.IntegerField(default=None, null=True)
     Active = models.IntegerField(default=None, null=True)
+    deltaConfirmed = models.IntegerField(default=None, null=True)
+    deltaDeaths = models.IntegerField(default=None, null=True)
+    deltaRecovered = models.IntegerField(default=None, null=True)
+
 
     def __str__(self):
         return self.State
