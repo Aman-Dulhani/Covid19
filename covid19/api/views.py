@@ -1,6 +1,6 @@
 from rest_framework.generics import ListAPIView
 import requests
-#from .serializers import Covid19Serializer
+from .serializers import Covid19Serializer
 from covid19.models import Covid19
 
 class Covid19ListView(ListAPIView):   
@@ -33,4 +33,5 @@ class Covid19ListView(ListAPIView):
                 DeltaRecovered = r['statewise'][i]['deltarecovered']
             )
     queryset = Covid19.objects.all()
+    serializer_class = Covid19Serializer
     
