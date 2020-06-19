@@ -15,9 +15,9 @@ class Covid19ListView(ListAPIView):
                 Deaths= r['statewise'][i]['deaths'],
                 Recovered = r['statewise'][i]['recovered'],
                 Active= r['statewise'][i]['active'],
-                deltaConfirmed = r['statewise'][i]['deltaconfirmed']
-                deltaDeaths = r['statewise'][i]['deltadeaths']
-                deltaRecovered = r['statewise'][i]['deltaRecovered']
+                DeltaConfirmed = r['statewise'][i]['deltaconfirmed']
+                DeltaDeaths = r['statewise'][i]['deltadeaths']
+                DeltaRecovered = r['statewise'][i]['deltaRecovered']
             )
     else:    
         for i in range(1,n):    
@@ -28,9 +28,9 @@ class Covid19ListView(ListAPIView):
                 Deaths= r['statewise'][i]['deaths'],
                 Recovered = r['statewise'][i]['recovered'],
                 Active= r['statewise'][i]['active'],
-                deltaConfirmed = r['statewise'][i]['deltaconfirmed']
-                deltaDeaths = r['statewise'][i]['deltadeaths']
-                deltaRecovered = r['statewise'][i]['deltaRecovered']
+                DeltaConfirmed = r['statewise'][i]['deltaconfirmed']
+                DeltaDeaths = r['statewise'][i]['deltadeaths']
+                DeltaRecovered = r['statewise'][i]['deltaRecovered']
             )
     queryset = Covid19.objects.all()
     serializer_class = Covid19Serializer
