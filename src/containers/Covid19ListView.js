@@ -10,23 +10,37 @@ class Covid19ListView extends Component{
         columnDefs: [{
             headerName: "State", field: "State"
           }, {
-            headerName: "Confirmed", field: "Confirmed"
-          },{
-            headerName: "", field:"DeltaConfirmed"
+            headerName: "Confirmed", 
+            children: [
+              {headerName:"C",field: "Confirmed",width: 100},
+              {headerName: "DC",field: "DeltaConfirmed", cellStyle: params => params.value > 0 ? {color: 'red'} : null,width: 100}
+            ],
+            width: 200, 
           },
           {
-            headerName: "Active", field: "Active"
+            headerName: "Active",
+            children: [
+              { headerName: "",field: "Active",width: 150}
+            ]
           },
           {
-            headerName: "Recovered", field: "Recovered"
-          },{
-            headerName: "", field: "DeltaRecovered"
+            headerName: "Recovered",
+            children: [
+              {headerName:"R", field:"Recovered",width:100},
+              {headerName: "DR", field: "DeltaRecovered",
+              cellStyle: params => params.value > 0 ? {color: 'green'} : null,width: 100}
+            ],
+            width: 100,
+
           },
           {
-            headerName: "Death", field:"Deaths"
-          },
-          {
-            headerName: "", field: "DeltaDeaths"
+            headerName: "Death", 
+            children: [
+              {headerName:"D", field:"Deaths",width:100},
+              {headerName: "DD", field: "DeltaDeaths",
+              cellStyle: params => params.value > 0 ? {color: 'red'} : null}
+            ],
+            width: 100
           }
         ],
         rowData:null,
@@ -47,7 +61,7 @@ class Covid19ListView extends Component{
                 className="ag-theme-alpine"
                 style={{
                 height: '1000px',
-                width: '1200px' }}
+                width: '1000px' }}
             >
                 <AgGridReact
                 columnDefs={this.state.columnDefs}
