@@ -14,7 +14,7 @@ SECRET_KEY = '-3qbl8elc7dvn(n4ab0#v5gq5bdd0(pc5#e&1sv7nvo%(prmj$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['corona-ind-19-20.herokuapp.com']
+ALLOWED_HOSTS = ['corona-ind-19-20.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -122,7 +122,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.AllowAny'
     ]
 }
 

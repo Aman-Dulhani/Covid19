@@ -1,0 +1,115 @@
+.main{
+    background: #1E1E30;
+    height: auto;
+}
+
+.header{
+    background: #1E1E30;
+    margin-left: 5px;
+    height: 50px;
+    border-bottom: 10px;
+}
+
+.header .icon{
+    margin: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+}
+
+.chart-container #myChart{
+    height: 200px;
+    width: 200px;
+}
+
+.header h4{
+    color: white;
+    margin: 5px;
+    font-size: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: American Typewriter, serif;
+}
+
+.chart-container{
+    position: relative;
+    height: 400px;
+    width: 800px;
+    margin-right: auto;
+    padding: 10px;
+    box-shadow: 8px;
+    background-color: #11111d;
+    box-shadow: 3px 3px 3px 3px rgb(6, 10, 29);
+}
+
+.card{
+    height: 180px;
+    margin: 10px;
+    background-color: #11111d;
+    box-shadow: 3px 3px 3px 3px rgb(6, 10, 29);
+}
+
+.card h2{
+    margin: auto;
+    font-family: American Typewriter, serif;
+    font-weight: 500;
+    color: aquamarine;
+    font-size: 30px;
+}
+
+.card h3{
+    font-family: inherit;
+    color: lightcyan;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+}
+
+.table-container{
+    background: #11111d;
+    padding: 20px;
+    margin-left: 52px;
+    margin-top: 10px;
+    box-shadow: 3px 3px 3px 3px rgb(6, 10, 29);
+    width: 1250px;
+    height: max-content;
+}
+
+#state {
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border-collapse: collapse;
+    border: 3px solid #11111d;
+    width: 100%;
+    align-items: center;
+  }
+
+  #state-header{
+      background-color: #24243b;
+      color: gray;
+  }
+  
+  #state-header th{
+      padding: 12px;
+      border: 4px solid #11111d;
+      border-radius: 8px;
+  }
+
+  #state td{
+    border: 4px solid #11111d;
+    padding: 8px;
+    color: gray;
+    border-radius: 8px;
+  }
+  
+  #state-data:nth-child(even){background-color: #19192c;}
+  
+  #state td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    margin: 5px;
+  }
+

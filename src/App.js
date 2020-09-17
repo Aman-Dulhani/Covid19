@@ -1,13 +1,11 @@
 import React from 'react';
 
-
-
-import Covid19ListView from './containers/Covid19ListView';
+import Home from './containers/Home';
 
 function App() {
   return (
     <div className="App">
-      <Covid19ListView />
+      <Home />
     </div>
   );
 }

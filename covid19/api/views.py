@@ -1,37 +1,40 @@
-from rest_framework.generics import ListAPIView
 import requests
-from .serializers import Covid19Serializer
-from covid19.models import Covid19
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
-class Covid19ListView(ListAPIView):   
-    url = 'https://api.covid19india.org/data.json'
-    r = requests.get(url).json()
-    n = len(r['statewise'])
-    if len(Covid19.objects.all())==0:
-        for i in range(1,n):    
-            Covid19.objects.create(
-                State = r['statewise'][i]['state'],
-                Confirmed= r['statewise'][i]['confirmed'],
-                Deaths= r['statewise'][i]['deaths'],
-                Recovered = r['statewise'][i]['recovered'],
-                Active= r['statewise'][i]['active'],
-                DeltaConfirmed = r['statewise'][i]['deltaconfirmed'],
-                DeltaDeaths = r['statewise'][i]['deltadeaths'],
-                DeltaRecovered = r['statewise'][i]['deltarecovered']
-            )
-    else:    
-        for i in range(1,n):    
-            Covid19.objects.filter(
-                State = r['statewise'][i]['state'],
-            ).update(
-                Confirmed= r['statewise'][i]['confirmed'],
-                Deaths= r['statewise'][i]['deaths'],
-                Recovered = r['statewise'][i]['recovered'],
-                Active= r['statewise'][i]['active'],
-                DeltaConfirmed = r['statewise'][i]['deltaconfirmed'],
-                DeltaDeaths = r['statewise'][i]['deltadeaths'],
-                DeltaRecovered = r['statewise'][i]['deltarecovered']
-            )
-    queryset = Covid19.objects.all()
-    serializer_class = Covid19Serializer
+
+URL = 'https://api.covid19india.org/data.json'
+
+@api_view(['GET', ])
+
+def external_api_call(request):   
+    if request.method == "GET":
+        Covid_status = {'cases_time_series': [], 'statewise': [], 'total': {}}
+        r = requests.get(URL).json()
+        n = len(r['cases_time_series'])
+        for i in range(n-8,n):
+            Covid_status['cases_time_series'].append({
+                'dailyconfirmed': r['cases_time_series'][i]['dailyconfirmed'],
+                'dailydeceased': r['cases_time_series'][i]['dailydeceased'],
+                'dailyrecovered': r['cases_time_series'][i]['dailyrecovered'],
+                'date': r['cases_time_series'][i]['date']
+            })
+        n = len(r['statewise'])
+        for i in range(n):
+            if i==0:
+                Covid_status['total'] = r['statewise'][i]
+                Covid_status['total']['recrate'] = round((int(r['statewise'][i]['recovered'])/int(r['statewise'][i]['confirmed']))*100,2)
+                Covid_status['total']['deathrate'] = round((int(r['statewise'][i]['deaths'])/int(r['statewise'][i]['confirmed']))*100,2)
+            else:
+                Covid_status['statewise'].append({
+                    'state': r['statewise'][i]['state'],
+                    'active': r['statewise'][i]['active'],
+                    'confirmed': r['statewise'][i]['confirmed'],
+                    'deaths': r['statewise'][i]['deaths'],
+                    'recovered': r['statewise'][i]['recovered'],
+                    "deltaconfirmed": r['statewise'][i]['deltaconfirmed'],
+                    "deltadeaths": r['statewise'][i]['deltadeaths'],
+                    "deltarecovered": r['statewise'][i]['deltarecovered'],
+                })
+        return Response(Covid_status)
     
