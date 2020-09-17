@@ -1,6 +1,7 @@
 .main{
     background: #1E1E30;
     height: auto;
+    width: max-content;
 }
 
 .header{
